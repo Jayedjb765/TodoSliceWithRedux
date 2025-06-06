@@ -31,14 +31,18 @@ import {
 } from "@/components/ui/select";
 import { Textarea } from "@/components/ui/textarea";
 import { cn } from "@/lib/utils";
+import { addTasks } from "@/redux/features/task/taskSlice";
+import { useAppDispatch } from "@/redux/hook";
 import { format } from "date-fns";
 import { CalendarIcon } from "lucide-react";
 import { useForm } from "react-hook-form";
 
 export function AddTaskModal() {
   const form = useForm();
+  const dispatch = useAppDispatch();
   const onSubmit = (data) => {
     console.log(data);
+    dispatch(addTasks(data));
   };
   return (
     <Dialog>
