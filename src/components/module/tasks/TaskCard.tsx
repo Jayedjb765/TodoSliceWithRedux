@@ -1,6 +1,8 @@
 import { Button } from "@/components/ui/button";
 import { Checkbox } from "@/components/ui/checkbox";
 import { cn } from "@/lib/utils";
+import { toggleCompleteState } from "@/redux/features/task/taskSlice";
+import { useAppDispatch } from "@/redux/hook";
 import type { ITask } from "@/types/types";
 import { MdDelete } from "react-icons/md";
 interface Itaskprops {
@@ -8,6 +10,7 @@ interface Itaskprops {
 }
 
 const TaskCard = ({ task }: Itaskprops) => {
+  const dispatch = useAppDispatch();
   return (
     <div>
       <div className="border px-5 py-3 rounded-md">
@@ -26,7 +29,7 @@ const TaskCard = ({ task }: Itaskprops) => {
             <Button variant="link" className="p-0 text-red-500">
               <MdDelete />
             </Button>
-            <Checkbox />
+            <Checkbox onClick={() => dispatch(toggleCompleteState(task.id))} />
           </div>
         </div>
         <p className="mt-5">{task.description}</p>

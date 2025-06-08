@@ -7,21 +7,21 @@ interface InitialState {
 }
 const initialState: InitialState = {
   tasks: [
-    // {
-    //   id: "1",
-    //   title: "Task 1",
-    //   description: "This is a task",
-    //   dueDate: "2025-11--02",
-    //   isCompleted: false,
-    //   priority: "High",
-    // },
+    {
+      id: "1",
+      title: "Task 1",
+      description: "This is a task",
+      dueDate: "2025-11--02",
+      isCompleted: false,
+      priority: "high",
+    },
     // {
     //   id: "2",
     //   title: "Task 2",
     //   description: "This is a task 2",
     //   dueDate: "2025-11--02",
     //   isCompleted: false,
-    //   priority: "Medium",
+    //   priority: "medium",
     // },
   ],
   filter: "all",
@@ -38,10 +38,18 @@ const taskSlice = createSlice({
       const taskData = createTask(action.payload);
       state.tasks.push(taskData);
     },
+    toggleCompleteState: (state, action: PayloadAction<string>) => {
+      console.log(action);
+      state.tasks.forEach((task) =>
+        task.id === action.payload
+          ? (task.isCompleted = !task.isCompleted)
+          : task
+      );
+    },
   },
 });
 
-export const { addTasks } = taskSlice.actions;
+export const { addTasks, toggleCompleteState } = taskSlice.actions;
 export const selectTasks = (state: RootState) => {
   return state.todo.tasks;
 };
