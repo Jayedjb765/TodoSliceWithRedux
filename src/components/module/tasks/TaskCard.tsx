@@ -1,7 +1,10 @@
 import { Button } from "@/components/ui/button";
 import { Checkbox } from "@/components/ui/checkbox";
 import { cn } from "@/lib/utils";
-import { toggleCompleteState } from "@/redux/features/task/taskSlice";
+import {
+  deleteTask,
+  toggleCompleteState,
+} from "@/redux/features/task/taskSlice";
 import { useAppDispatch } from "@/redux/hook";
 import type { ITask } from "@/types/types";
 import { MdDelete } from "react-icons/md";
@@ -26,10 +29,17 @@ const TaskCard = ({ task }: Itaskprops) => {
             <h1>{task.title}</h1>
           </div>
           <div className="flex gap-3 items-center">
-            <Button variant="link" className="p-0 text-red-500">
+            <Button
+              onClick={() => dispatch(deleteTask(task.id))}
+              variant="link"
+              className="p-0 text-red-500"
+            >
               <MdDelete />
             </Button>
-            <Checkbox onClick={() => dispatch(toggleCompleteState(task.id))} />
+            <Checkbox
+              checked={task.isCompleted}
+              onClick={() => dispatch(toggleCompleteState(task.id))}
+            />
           </div>
         </div>
         <p className="mt-5">{task.description}</p>

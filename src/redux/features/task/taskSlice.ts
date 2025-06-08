@@ -46,10 +46,13 @@ const taskSlice = createSlice({
           : task
       );
     },
+    deleteTask: (state, action: PayloadAction<string>) => {
+      state.tasks = state.tasks.filter((task) => task.id !== action.payload);
+    },
   },
 });
 
-export const { addTasks, toggleCompleteState } = taskSlice.actions;
+export const { addTasks, toggleCompleteState, deleteTask } = taskSlice.actions;
 export const selectTasks = (state: RootState) => {
   return state.todo.tasks;
 };
