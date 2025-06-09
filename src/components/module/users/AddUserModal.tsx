@@ -18,9 +18,10 @@ import {
 import { Input } from "@/components/ui/input";
 
 import { Textarea } from "@/components/ui/textarea";
-import { addTasks } from "@/redux/features/task/taskSlice";
+import { addUser } from "@/redux/features/user/userSlice";
+
 import { useAppDispatch } from "@/redux/hook";
-import type { ITask } from "@/types/types";
+import type { IUser } from "@/types/types";
 import { useForm, type FieldValues, type SubmitHandler } from "react-hook-form";
 
 export function AddUserModal() {
@@ -28,7 +29,7 @@ export function AddUserModal() {
   const dispatch = useAppDispatch();
   const onSubmit: SubmitHandler<FieldValues> = (data) => {
     console.log(data);
-    dispatch(addTasks(data as ITask));
+    dispatch(addUser(data as IUser));
   };
   return (
     <Dialog>
