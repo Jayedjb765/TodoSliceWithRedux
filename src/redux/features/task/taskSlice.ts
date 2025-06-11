@@ -49,6 +49,17 @@ const taskSlice = createSlice({
     deleteTask: (state, action: PayloadAction<string>) => {
       state.tasks = state.tasks.filter((task) => task.id !== action.payload);
     },
+    updateTask: (state, action: PayloadAction<ITask>) => {
+      const updatedTask = action.payload;
+      const task = state.tasks.find((task) => task.id === updatedTask.id);
+      if (task) {
+        task.title = updatedTask.title;
+        task.description = updatedTask.description;
+        task.dueDate = updatedTask.dueDate;
+        task.priority = updatedTask.priority;
+        task.isCompleted = updatedTask.isCompleted;
+      }
+    },
     updateFilter: (
       state,
       action: PayloadAction<"high" | "medium" | "low" | "all">
