@@ -7,23 +7,24 @@ interface InitialState {
 }
 const initialState: InitialState = {
   tasks: [
-    // {
-    //   id: "1",
-    //   title: "Task 1",
-    //   description: "This is a task",
-    //   dueDate: "2025-11--02",
-    //   isCompleted: false,
-    //   priority: "high",
-    //   assignTo: "",
-    // },
-    // {
-    //   id: "2",
-    //   title: "Task 2",
-    //   description: "This is a task 2",
-    //   dueDate: "2025-11--02",
-    //   isCompleted: false,
-    //   priority: "medium",
-    // },
+    {
+      id: "1",
+      title: "Task 1",
+      description: "This is a task",
+      dueDate: "2025-11--02",
+      isCompleted: false,
+      priority: "high",
+      assignTo: "",
+    },
+    {
+      id: "2",
+      title: "Task 2",
+      description: "This is a task 2",
+      dueDate: "2025-11--02",
+      isCompleted: false,
+      priority: "medium",
+      assignTo: "2",
+    },
   ],
   filter: "all",
 };

@@ -5,7 +5,8 @@ import {
   deleteTask,
   toggleCompleteState,
 } from "@/redux/features/task/taskSlice";
-import { useAppDispatch } from "@/redux/hook";
+import { selectUsers } from "@/redux/features/user/userSlice";
+import { useAppDispatch, useAppSelector } from "@/redux/hook";
 import type { ITask } from "@/types/types";
 import { MdDelete } from "react-icons/md";
 interface Itaskprops {
@@ -14,6 +15,8 @@ interface Itaskprops {
 
 const TaskCard = ({ task }: Itaskprops) => {
   const dispatch = useAppDispatch();
+  const users = useAppSelector(selectUsers);
+  const assignUser = users.find((user) => user.id === task.assignTo);
   return (
     <div>
       <div className="border px-5 py-3 rounded-md">
@@ -44,6 +47,9 @@ const TaskCard = ({ task }: Itaskprops) => {
             />
           </div>
         </div>
+        <h2 className="mt-5">
+          Assign User - {assignUser ? assignUser.name : "No one"}
+        </h2>
         <p className="mt-5">{task.description}</p>
       </div>
     </div>
