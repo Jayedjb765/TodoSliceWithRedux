@@ -7,14 +7,15 @@ interface InitialState {
 }
 const initialState: InitialState = {
   tasks: [
-    {
-      id: "1",
-      title: "Task 1",
-      description: "This is a task",
-      dueDate: "2025-11--02",
-      isCompleted: false,
-      priority: "high",
-    },
+    // {
+    //   id: "1",
+    //   title: "Task 1",
+    //   description: "This is a task",
+    //   dueDate: "2025-11--02",
+    //   isCompleted: false,
+    //   priority: "high",
+    //   assignTo: "",
+    // },
     // {
     //   id: "2",
     //   title: "Task 2",
@@ -26,7 +27,10 @@ const initialState: InitialState = {
   ],
   filter: "all",
 };
-type DraftTask = Pick<ITask, "title" | "description" | "dueDate" | "priority">;
+type DraftTask = Pick<
+  ITask,
+  "title" | "description" | "dueDate" | "priority" | "assignTo"
+>;
 const createTask = (taskData: DraftTask): ITask => {
   return { id: nanoid(), isCompleted: false, ...taskData };
 };

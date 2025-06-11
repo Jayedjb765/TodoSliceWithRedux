@@ -7,8 +7,8 @@ interface InitialState {
 
 const initialState: InitialState = {
   users: [
-    { id: "1", name: "John", email: "jayedjb76@gmail.com", age: 30 },
-    { id: "2", name: "John", email: "jayedjb76@gmail.com", age: 30 },
+    // { id: "1", name: "John", email: "jayedjb76@gmail.com", age: 30 },
+    // { id: "2", name: "John", email: "jayedjb76@gmail.com", age: 30 },
   ],
 };
 type Draftuser = Pick<IUser, "age" | "name" | "email">;

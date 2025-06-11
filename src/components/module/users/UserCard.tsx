@@ -1,5 +1,5 @@
 import { Button } from "@/components/ui/button";
-import { deleteTask } from "@/redux/features/task/taskSlice";
+
 import { deletUser } from "@/redux/features/user/userSlice";
 import { useAppDispatch } from "@/redux/hook";
 import type { IUser } from "@/types/types";
